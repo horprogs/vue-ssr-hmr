@@ -1,0 +1,38 @@
+{
+  "name": "vue-ssr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --hot --config webpack.client.js",
+    "build": "NODE_ENV=production webpack --config webpack.client.js",
+    "build-server": "NODE_ENV=production webpack --config webpack.server.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.4.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "mini-css-extract-plugin": "^0.7.0",
+    "path": "^0.12.7",
+    "url-loader": "^1.1.2",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-router": "^3.0.6",
+    "vue-server-renderer": "^2.6.10",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "vuex": "^3.1.1",
+    "vuex-router-sync": "^5.0.0",
+    "webpack": "^4.32.2",
+    "webpack-dev-server": "^3.5.1",
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.2"
+  }
+}

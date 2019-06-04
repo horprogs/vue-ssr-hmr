@@ -1,6 +1,6 @@
 const path = require('path');
 
-const server = require('express')()
+const express = require('express');
 
 const { createBundleRenderer } = require('vue-server-renderer')
 
@@ -8,13 +8,17 @@ const template = require('fs').readFileSync(path.join(__dirname, './templates/in
 const serverBundle = require(path.join(__dirname, '../dist/vue-ssr-server-bundle.json'));
 const clientManifest = require(path.join(__dirname, '../dist/vue-ssr-client-manifest.json'));
 
+const server = express()
+
 const renderer = createBundleRenderer(serverBundle, {
     runInNewContext: false, // recommended
     template, // (optional) page template
     clientManifest // (optional) client build manifest
 })
 
-// server.use('/dist', server.static(path.join(__dirname, './dist')));
+console.log(path.join(__dirname, '../dist'))
+
+server.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 server.get('*', (req, res) => {
     const context = { url: req.url }
@@ -34,4 +38,4 @@ server.get('*', (req, res) => {
     })
 })
 
-server.listen(8080)
+server.listen(3000)

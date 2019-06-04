@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --hot --config webpack.client.js",
+    "start-server": "webpack -w --config webpack.server.js",
     "build": "NODE_ENV=production webpack --config webpack.client.js",
     "build-server": "NODE_ENV=production webpack --config webpack.server.js"
   },

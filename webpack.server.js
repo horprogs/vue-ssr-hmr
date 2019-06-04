@@ -37,5 +37,5 @@ module.exports = merge(baseConfig, {
     // `vue-ssr-server-bundle.json`
     plugins: [
         new VueSSRServerPlugin()
-    ]
+    ],
 })

@@ -8,14 +8,18 @@ const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production'
 
+console.log(isProduction)
+
 let config = merge(baseConfig, {
     entry: ['./app/entry-client.js'],
     plugins: [
         new VueSSRClientPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
     ],
     output: {
         path: path.resolve('./dist/'),
         filename: '[name].js',
+        publicPath: 'http://localhost:9999/dist/'
     },
     module: {
         rules: [
@@ -31,11 +35,12 @@ let config = merge(baseConfig, {
         ]
     },
     devServer: {
-        publicPath: 'http://localhost:3000/',
+        contentBase: './dist',
+        publicPath: 'http://localhost:9999/dist/',
         hot: true,
         inline: true,
         historyApiFallback: true,
-        port: 3000,
+        port: 9999,
         headers: {
             'Access-Control-Allow-Origin': '*',
         },

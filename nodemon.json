@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "watch": [
+    "dist/"
+  ],
+  "ext": "json",
+  "main": "app/server.js"
+}

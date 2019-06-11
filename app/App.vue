@@ -1,5 +1,5 @@
 <template>
-    <div>Home pagee!!!zggfs</div>
+    <div>Home page</div>
 </template>
 
 

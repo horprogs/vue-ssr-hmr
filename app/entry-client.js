@@ -11,32 +11,20 @@ router.onReady(() => {
         store.replaceState(window.__INITIAL_STATE__)
     }
 
-    app.$mount()
+    app.$mount('#app', true)
 })
 
-const myComponentOptions = {
-    data() {  },
-    created() {  },
-    render() {}
-}
-
 if (module.hot) {
-    const api = require('vue-hot-reload-api')
-    const Vue = require('vue')
+    const api = require('vue-hot-reload-api');
+    const Vue = require('vue');
 
-    // make the API aware of the Vue that you are using.
-    // also checks compatibility.
     api.install(Vue)
-
-    // compatibility can be checked via api.compatible after installation
     if (!api.compatible) {
         throw new Error('vue-hot-reload-api is not compatible with the version of Vue you are using.')
     }
 
     // indicate this module can be hot-reloaded
-    module.hot.accept('./app.js', () => {
-        console.log('VVVVV')
-    })
+    module.hot.accept()
 
     // if (!module.hot.data) {
     //     // for each component option object to be hot-reloaded,
@@ -44,7 +32,7 @@ if (module.hot) {
     //     // do this once on startup.
     //     api.createRecord('very-unique-id', myComponentOptions)
     // }
-    //else {
+    // else {
     //     // if a component has only its template or render function changed,
     //     // you can force a re-render for all its active instances without
     //     // destroying/re-creating them. This keeps all current app state intact.

@@ -1,8 +1,9 @@
 {
   "verbose": true,
   "watch": [
-    "dist/"
+    "dist/",
+    "app/server.js"
   ],
-  "ext": "json",
+  "ext": "json,js",
   "main": "app/server.js"
 }

@@ -1,42 +1,66 @@
 <template>
-  <div>Main page</div>
+  <div>
+    <div v-for="item in items" v-bind:key="item.id">
+      {{ item.title }}
+    </div>
+    <input @value="title" @input="onChangeTitle" />
+    {{ title }}
+    <button @click="onAddItem">Add item</button>
+  </div>
 </template>
 
 <script>
-import store from '../store/main';
+import { mapState } from 'vuex';
+import { MAIN__ITEM_ADD, MAIN__ITEM_ADD_ASYNC } from '../store/const/main';
 
 export default {
   metaInfo: {
     title: 'Main page',
   },
-  computed: {
-    item() {
-      return this.$store.state.items[this.$route.params.id];
-    },
+  state: {
+    title: '',
   },
-
-  serverPrefetch() {
-    this.registerStore();
-
-    return this.fetchItem();
+  computed: {
+    item(id) {
+      return this.$store.state.main.items.find(item => item.id === id);
+    },
+    ...mapState({
+      title: state => state.title,
+    }),
+    items() {
+      return this.$store.state.main.items;
+    },
   },
 
   mounted() {
-    this.registerStore();
+    console.log('!!!!');
+  },
 
-    if (!this.item) {
-      this.fetchItem();
-    }
+  serverPrefetch() {
+    this.addItem({ id: 55, title: 'Item 55' });
   },
 
   methods: {
-    registerStore() {
-      // Preserve the previous state if it was injected from the server
-      this.$store.registerModule('main', store, { preserveState: true });
+    addAsyncItem(item) {
+      this.$store.dispatch(MAIN__ITEM_ADD_ASYNC, item);
     },
-    fetchItem() {
-      // return the Promise from the action
-      return this.$store.dispatch('fetchItem', this.$route.params.id);
+    addItem(item) {
+      return this.$store.commit(MAIN__ITEM_ADD, item);
+    },
+    onChangeTitle(e) {
+      this.$store.commit('changeTitle', { title: e.target.title });
+    },
+    onAddItem() {
+      this.addItem({
+        id: Math.floor(Math.random() * 100),
+        title: this.$store.state.title,
+      });
+    },
+  },
+
+  mutations: {
+    changeTitle(state, title) {
+      state.title = title;
     },
   },
 };

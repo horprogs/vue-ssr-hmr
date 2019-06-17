@@ -8,10 +8,14 @@ const template = require('fs').readFileSync(
   path.join(__dirname, './templates/index.html'),
   'utf-8',
 );
+
+// eslint-disable-next-line import/no-dynamic-require
 const serverBundle = require(path.join(
   __dirname,
   '../dist/vue-ssr-server-bundle.json',
 ));
+
+// eslint-disable-next-line import/no-dynamic-require
 const clientManifest = require(path.join(
   __dirname,
   '../dist/vue-ssr-client-manifest.json',
@@ -32,7 +36,7 @@ server.get('*', (req, res) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      if (err.code === 404) {
+      if (+err.message === 404) {
         res.status(404).end('Page not found');
       } else {
         console.log(err);
@@ -44,4 +48,4 @@ server.get('*', (req, res) => {
   });
 });
 
-server.listen(3000);
+server.listen(process.env.PORT || 3000);

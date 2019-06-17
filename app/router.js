@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import VueMeta from 'vue-meta';
 
+import routes from './routes';
+
 import Main from './client/components/Main.vue';
 import About from './client/components/About.vue';
 
@@ -12,8 +14,8 @@ export function createRouter() {
   return new Router({
     mode: 'history',
     routes: [
-      { path: '/', component: Main },
-      { path: '/about/', component: About },
+      { path: routes.pages.main, component: Main },
+      { path: routes.pages.about, component: About },
     ],
   });
 }

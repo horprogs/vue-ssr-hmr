@@ -12,15 +12,21 @@ let config = merge(baseConfig, {
   output: {
     path: path.resolve('./dist/'),
     filename: '[name].[hash:8].js',
-    publicPath: 'http://localhost:9999/dist/',
+    publicPath: '/dist/',
   },
 });
 
 if (!isProduction) {
   config = merge(config, {
+    output: {
+      filename: '[name].js',
+      publicPath: 'http://localhost:9999/dist/',
+    },
     plugins: [new webpack.HotModuleReplacementPlugin()],
+    devtool: 'source-map',
     devServer: {
-      contentBase: './dist',
+      writeToDisk: true,
+      contentBase: path.resolve(__dirname, 'dist'),
       publicPath: 'http://localhost:9999/dist/',
       hot: true,
       inline: true,

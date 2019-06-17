@@ -9,11 +9,15 @@ export default {
     items: [
       {
         id: 1,
-        title: 'Item 1',
+        title: 'Milk',
       },
       {
         id: 2,
-        title: 'Item 2',
+        title: 'Strawberry',
+      },
+      {
+        id: 3,
+        title: 'Egg',
       },
     ],
   },
@@ -22,7 +26,10 @@ export default {
       state.items = state.items.filter(item => item.id !== id);
     },
     [MAIN__ITEM_ADD](state, { item }) {
-      state.items = [...state.items].push(item);
+      const items = [...state.items];
+      items.push(item);
+
+      state.items = items;
     },
   },
   actions: {

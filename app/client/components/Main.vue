@@ -1,67 +1,86 @@
 <template>
   <div>
-    <div v-for="item in items" v-bind:key="item.id">
-      {{ item.title }}
+    <h1>Shopping list</h1>
+    <div v-for="item in items" v-bind:key="item.id" :class="$style.item">
+      <span>{{ item.title }}</span>
+      <span>
+        <button @click="onRemoveItem" :data-id="item.id">Remove</button>
+      </span>
     </div>
-    <input @value="title" @input="onChangeTitle" />
-    {{ title }}
-    <button @click="onAddItem">Add item</button>
+
+    <div :class="$style.controls">
+      <input @value="title" @input="onChangeTitle" />
+      <button @click="addItem">Add item</button>
+      <button @click="addAsyncItem">Add item after one second</button>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import { MAIN__ITEM_ADD, MAIN__ITEM_ADD_ASYNC } from '../store/const/main';
+import {
+  MAIN__ITEM_ADD,
+  MAIN__ITEM_ADD_ASYNC,
+  MAIN__ITEM_DELELE,
+} from '../store/const/main';
 
 export default {
   metaInfo: {
     title: 'Main page',
   },
-  state: {
-    title: '',
+  data() {
+    return {
+      title: 'Default title',
+    };
   },
   computed: {
-    item(id) {
-      return this.$store.state.main.items.find(item => item.id === id);
-    },
     ...mapState({
-      title: state => state.title,
+      items: state => state.main.items,
     }),
-    items() {
-      return this.$store.state.main.items;
-    },
   },
 
-  mounted() {
-    console.log('!!!!');
+  mounted: () => {
+    console.log('Mounted');
   },
 
   serverPrefetch() {
-    this.addItem({ id: 55, title: 'Item 55' });
+    console.log('Run only server');
   },
 
   methods: {
-    addAsyncItem(item) {
-      this.$store.dispatch(MAIN__ITEM_ADD_ASYNC, item);
+    addAsyncItem() {
+      const item = {
+        id: Math.floor(Math.random() * 100),
+        title: this.$data.title,
+      };
+
+      this.$store.dispatch(MAIN__ITEM_ADD_ASYNC, { item });
     },
-    addItem(item) {
-      return this.$store.commit(MAIN__ITEM_ADD, item);
+    addItem() {
+      const item = {
+        id: Math.floor(Math.random() * 100),
+        title: this.$data.title,
+      };
+
+      return this.$store.commit(MAIN__ITEM_ADD, { item });
     },
     onChangeTitle(e) {
-      this.$store.commit('changeTitle', { title: e.target.title });
+      this.$data.title = e.target.value;
     },
-    onAddItem() {
-      this.addItem({
-        id: Math.floor(Math.random() * 100),
-        title: this.$store.state.title,
-      });
-    },
-  },
-
-  mutations: {
-    changeTitle(state, title) {
-      state.title = title;
+    onRemoveItem(e) {
+      const id = +e.target.getAttribute('data-id');
+      return this.$store.commit(MAIN__ITEM_DELELE, { id });
     },
   },
 };
 </script>
+
+<style module>
+.item {
+  padding: 3px 0;
+}
+
+.controls {
+  margin-top: 12px;
+}
+</style>

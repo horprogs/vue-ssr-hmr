@@ -1,8 +1,10 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base.js');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+
+const baseConfig = require('./webpack.base.js');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -13,6 +15,24 @@ let config = merge(baseConfig, {
     path: path.resolve('./dist/'),
     filename: '[name].[hash:8].js',
     publicPath: '/dist/',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]_[hash:base64:8]',
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
 });
 
@@ -36,6 +56,14 @@ if (!isProduction) {
         'Access-Control-Allow-Origin': '*',
       },
     },
+  });
+} else {
+  config = merge(config, {
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].[hash:8].css',
+      }),
+    ],
   });
 }
 

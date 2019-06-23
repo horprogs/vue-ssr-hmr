@@ -44,7 +44,7 @@ export default {
   },
 
   serverPrefetch() {
-    console.log('Run only server');
+    console.log('Run only on server');
   },
 
   methods: {

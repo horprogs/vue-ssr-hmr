@@ -1,7 +1,7 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
-const baseConfig = require('./webpack.base.js');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
+const baseConfig = require('./webpack.base.js');
 
 module.exports = merge(baseConfig, {
   entry: './app/entry-server.js',
@@ -19,4 +19,12 @@ module.exports = merge(baseConfig, {
   }),
 
   plugins: [new VueSSRServerPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['css-loader'],
+      },
+    ],
+  },
 });

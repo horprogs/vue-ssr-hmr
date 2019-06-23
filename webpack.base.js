@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const merge = require('webpack-merge');
@@ -20,20 +19,6 @@ let config = {
         },
       },
       {
-        test: /\.css$/,
-        use: [
-          isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[local]_[hash:base64:8]',
-              },
-            },
-          },
-        ],
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file),
@@ -51,9 +36,6 @@ let config = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].[hash:8].css',
-    }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),

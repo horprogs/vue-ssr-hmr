@@ -9,17 +9,8 @@ const template = require('fs').readFileSync(
   'utf-8',
 );
 
-// eslint-disable-next-line import/no-dynamic-require
-const serverBundle = require(path.join(
-  __dirname,
-  '../dist/vue-ssr-server-bundle.json',
-));
-
-// eslint-disable-next-line import/no-dynamic-require
-const clientManifest = require(path.join(
-  __dirname,
-  '../dist/vue-ssr-client-manifest.json',
-));
+const serverBundle = require('../dist/vue-ssr-server-bundle.json');
+const clientManifest = require('../dist/vue-ssr-client-manifest.json');
 
 const server = express();
 

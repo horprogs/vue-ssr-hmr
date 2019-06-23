@@ -8,21 +8,21 @@ So, I decided to create this boilerplate. I hope that it will be helpful for som
 
 It includes:
 
-##### Server-side rendering (SSR)
+### Server-side rendering (SSR)
 
 It helps to user to receive content faster. Also, it improves SEO.
 
-##### Single page application
+### Single page application
 
 Routing without full reload pages.
 
-##### Vuex state management
+### Vuex state management
 
 State management pattern. Represents centralized store for all the components in an application. 
 
 More: https://vuex.vuejs.org
 
-##### CSS modules
+### CSS modules
 
 System for modularizing and composing CSS. You can use it as:
 ```html
@@ -48,7 +48,7 @@ And result class will be shown like `.red_<hash>`.
 
 More: https://vue-loader.vuejs.org/guide/css-modules.html#usage
 
-##### Hot reloading, including server-side
+### Hot reloading, including server-side
 
 Technique, which improves your development performance significantly. 
 When you change your code or css you will see result immediately in browser. 
@@ -59,26 +59,26 @@ When you change code, server-side code will recompile too.
 And if you reload page, you will see changes on server side.
 
 
-##### Code-splitting
+### Code-splitting
 
 In this boilerplate you doesn't have one huge js bundle, 
 but you have one main bundle a few small bundles for each page.
 
 It allows not to load unnecessary code for current page.
 
-#### Easy and customizable build for local development and production
+### Easy and customizable build for local development and production
 
 Boilerplate has a base webpack config and different configs for client and server.
 Production build has minified css and js bundles with hash in name for caching static in browser.
 
 Also, there is a convenient html template where you can put your common html code.
 
-#### Code quality
+### Code quality
 
 Boilerplate has ESLint with Airbnb VueJS config and Prettier for awesome code formatting.
 
 
-### How to use it
+## How to use it
 
 To start environment for local development, use:
 ```

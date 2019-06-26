@@ -23,7 +23,14 @@ module.exports = merge(baseConfig, {
     rules: [
       {
         test: /\.css$/,
-        use: ['css-loader'],
+        use: ['vue-style-loader', {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: '[local]_[hash:base64:8]',
+            },
+          },
+        }],
       },
     ],
   },

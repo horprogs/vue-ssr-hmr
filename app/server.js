@@ -18,6 +18,7 @@ const renderer = createBundleRenderer(serverBundle, {
   runInNewContext: false,
   template,
   clientManifest,
+  inject: false,
 });
 
 server.use('/dist', express.static(path.join(__dirname, '../dist')));

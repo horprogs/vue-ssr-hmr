@@ -14,9 +14,6 @@ let config = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          extractCSS: isProduction,
-        },
       },
       {
         test: /\.js$/,

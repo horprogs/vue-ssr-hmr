@@ -86,6 +86,8 @@ To start environment for local development, use:
 ```
 yarn run dev
 ```
+**If you run it the first time, you'll get error, that server bundle wasn't found. 
+It's normal. Just re-run this task.**
 
 To production build, use (assets will be served from `dist` folder):
 ```

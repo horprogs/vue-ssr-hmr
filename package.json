@@ -4,13 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "nodemon": "nodemon app/nodemon.js",
     "dev-client": "webpack-dev-server --config webpack.client.js",
-    "dev-server": "webpack -w --config webpack.server.js & nodemon app/nodemon.js",
-    "dev": "run-p dev-client dev-server",
+    "dev-server": "webpack -w --config webpack.server.js",
+    "dev": "run-p dev-client dev-server nodemon",
     "clean": "rimraf ./dist/",
     "build-client": "NODE_ENV=production webpack --config webpack.client.js",
     "build-server": "NODE_ENV=production webpack --config webpack.server.js",
-    "build": "yarn clean & run-p build-client build-server",
+    "build-all": "run-p build-client build-server",
+    "build": "run-s clean build-all",
     "start-node": "node app/server.js"
   },
   "dependencies": {

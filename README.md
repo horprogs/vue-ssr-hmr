@@ -1,6 +1,7 @@
 # VueJS + Vuex + SSR + HMR boilerplate
 
 Demo: https://vue-ssr-hmr.herokuapp.com/
+Article: https://medium.com/js-dojo/how-i-made-it-easy-to-develop-on-vue-js-with-server-side-rendering-fdeebdd7e8d8
 
 I decided develop my new application, using VueJS. 
 I was looking for convenient examples of VueJS, Vuex, which using SSR and hot reloading, 

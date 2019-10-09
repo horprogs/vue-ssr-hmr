@@ -9,8 +9,8 @@
     "dev-server": "webpack -w --config webpack.server.js",
     "dev": "run-p dev-client dev-server nodemon",
     "clean": "rimraf ./dist/",
-    "build-client": "NODE_ENV=production webpack --config webpack.client.js",
-    "build-server": "NODE_ENV=production webpack --config webpack.server.js",
+    "build-client": "cross-env NODE_ENV=production webpack --config webpack.client.js",
+    "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.js",
     "build-all": "run-p build-client build-server",
     "build": "run-s clean build-all",
     "start-node": "node app/server.js"
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "cross-env": "^6.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",

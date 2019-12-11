@@ -1,10 +1,15 @@
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
+import Vuetify from 'vuetify';
+
+import 'vuetify/dist/vuetify.min.css';
 
 import { createRouter } from './router';
 import { createStore } from './client/store';
 
 import App from './App.vue';
+
+Vue.use(Vuetify);
 
 export function createApp() {
   const router = createRouter();

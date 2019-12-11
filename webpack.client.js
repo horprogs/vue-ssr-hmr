@@ -20,6 +20,7 @@ let config = merge(baseConfig, {
     rules: [
       {
         test: /\.css$/,
+        exclude: /vuetify\/dist\/vuetify\.min\.css/,
         use: [
           isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
           {
@@ -29,6 +30,15 @@ let config = merge(baseConfig, {
                 localIdentName: '[local]_[hash:base64:8]',
               },
             },
+          },
+        ],
+      },
+      {
+        test: /vuetify\/dist\/vuetify\.min\.css/,
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+          {
+            loader: 'css-loader',
           },
         ],
       },

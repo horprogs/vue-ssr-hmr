@@ -1,5 +1,7 @@
 <template>
   <div>
+    <v-btn large color="primary">Primary</v-btn>
+
     <div :class="$style.links">
       <router-link to="/" :class="$style.link">Main</router-link>
       <router-link to="/about" :class="$style.link">About</router-link>
@@ -22,7 +24,7 @@
 </style>
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
+body {
+  font-family: Arial, sans-serif;
+}
 </style>

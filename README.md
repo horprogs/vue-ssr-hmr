@@ -24,6 +24,8 @@ Routing without full reload pages.
 
 State management pattern. Represents centralized store for all the components in an application. 
 
+Also, it contains example of fetch data from API and store it to Vuex modules.
+
 More: https://vuex.vuejs.org
 
 ### CSS modules

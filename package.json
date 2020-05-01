@@ -13,7 +13,7 @@
     "build-server": "cross-env NODE_ENV=production webpack --config webpack.server.js",
     "build-all": "run-p build-client build-server",
     "build": "run-s clean build-all",
-    "start-node": "node app/server.js"
+    "start": "node app/server.js"
   },
   "dependencies": {
     "@babel/core": "^7.4.5",

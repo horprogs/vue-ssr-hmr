@@ -100,7 +100,7 @@ yarn run build
 
 To run server side, use:
 ```
-yarn run start-node
+yarn run start
 ```
 (Note, this way isn't for production. 
 Better, you should use process manager, like `PM2`)

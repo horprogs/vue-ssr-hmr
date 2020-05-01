@@ -18,9 +18,11 @@ const renderer = createBundleRenderer(serverBundle, {
   runInNewContext: false,
   template,
   clientManifest,
+  inject: false,
 });
 
 server.use('/dist', express.static(path.join(__dirname, '../dist')));
+server.use('/', express.static(path.join(__dirname, './assets')));
 
 server.get('*', (req, res) => {
   const context = { url: req.url };

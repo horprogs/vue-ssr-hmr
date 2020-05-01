@@ -1,9 +1,8 @@
 {
   "verbose": false,
   "watch": [
-    "dist/",
+    "dist/vue-ssr-server-bundle.json",
     "app/server.js"
   ],
-  "ext": "json,js",
-  "main": "app/server.js"
+  "ext": "json,js"
 }

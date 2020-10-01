@@ -89,6 +89,8 @@ Boilerplate has ESLint with Airbnb VueJS config and Prettier for awesome code fo
 To start environment for local development, use:
 ```
 yarn run dev
+# or solution for linux
+sudo yarn run build && yarn run dev
 ```
 **If you run it the first time, you'll get error, that server bundle wasn't found. 
 It's normal. Just re-run this task.**

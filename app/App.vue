@@ -1,4 +1,9 @@
 <template>
+<!--  <metainfo>-->
+<!--    <template v-slot:title="{ content }"-->
+<!--      >{{ content }} - Yay!</template-->
+<!--    >-->
+<!--  </metainfo>-->
   <div>
     <div :class="$style.links">
       <router-link to="/" :class="$style.link">Main</router-link>
@@ -22,7 +27,23 @@
 </style>
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
+body {
+  font-family: Arial, sans-serif;
+}
 </style>
+
+<script>
+import { useMeta } from 'vue-meta';
+
+export default {
+  setup() {
+    useMeta({
+      title: 'Vue SSR HMR Vue 3 + Vito',
+      htmlAttrs: {
+        lang: 'en',
+        amp: true,
+      },
+    });
+  },
+};
+</script>
